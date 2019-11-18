@@ -1,0 +1,35 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &__top {
+        text-align: center;
+        margin-bottom: 20px;
+
+        h2 {
+            font-size: 28px;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+    
+    &__register-link {
+        display: block;
+        text-align: center;
+    }
+
+    .block {
+        width: 430px;
+        max-width: 100%;
+        padding: 45px 45px 25px;
+    }
+
+    .button {
+        width: 100%;
+        text-transform: uppercase;
+    }
+}
