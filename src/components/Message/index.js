@@ -1,13 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import classNames from 'classnames'
-import { Button as BaseButton } from 'antd';
-import './Button.scss';
+import './Message.scss';
 
-const Button = props => <BaseButton {...props} className={ classNames('button', props.className) } />;
+const Message = ({ avatar, user, text, date }) => (
+    <div className="message">
+        <div className="message__avater">
+            <img src={avatar} alt={user.fullname} />
+        </div>
+        <div className="message__content">
+            <div className="message__bubble">
+                <p className="message__text">{text}</p>
+            </div>
+            <span className="message__date">Вчера в 12:31</span>
+        </div>
+    </div>
+)
 
-Button.propTypes = {
-    className: PropTypes.string
+Message.defaultProps = {
+    user: {}
 }
 
-export default Button
+Message.propTypes = {
+    avatar: PropTypes.string,
+    text: PropTypes.string,
+    date: PropTypes.string,
+    user: PropTypes.object,
+}
+
+export default Message
