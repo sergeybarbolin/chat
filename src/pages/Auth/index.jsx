@@ -1,33 +1,13 @@
-import React, { Component } from 'react'
-import { Block } from "./../../components";
-import { LoginForm } from './../../modules';
+import React from 'react';
+import { Route } from 'react-router-dom';
+import { LoginForm, RegisterForm } from './../../modules';
 import './Auth.scss';
 
-class Auth extends Component {
-
-    // handleSubmit = e => {
-    //     e.preventDefault();
-    //     this.props.form.validateFields((err, values) => {
-    //       if (!err) {
-    //         console.log('Received values of form: ', values);
-    //       }
-    //     });
-    // };
-
-    render() {
-        return (
-            <section className="auth">
-                <div className="auth__top">
-                    <h2>Авторизация</h2>
-                    <p>Заполните логин и пароль для авторизации.</p>
-                </div>
-                <Block>
-                    <LoginForm />
-                </Block>
-            </section>
-        )
-    }
-}
-
+const Auth = () => (
+    <section className="auth">
+        <Route exact path={["/", "/login"]} component={LoginForm} />
+        <Route exact path="/register" component={RegisterForm} />
+    </section>
+)
 
 export default Auth;
