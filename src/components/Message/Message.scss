@@ -1,0 +1,90 @@
+@import './../../styles/veriables';
+
+.message {
+    $self: &;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+
+    &__avatar {
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        overflow: hidden;
+        margin-right: 15px;
+        margin-bottom: 20px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        max-width: 55vw;
+    }
+
+    &__bubble {
+        background-color: $blue;
+        border-radius: 5px 5px 5px 0;
+        padding: 2px;
+    }
+
+    &__text {
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+        padding: 8px 10px;
+        color: #fff;
+    }
+
+    &__date {
+        font-size: 12px;
+    }
+
+    &__status {
+        margin: 0 10px;
+    }
+
+    &__attachments {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 7px;
+    }
+
+    .message__attachments-item {
+        width: 24%;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    .message__attachments-item img {
+        width: 100%;
+    }
+
+    &--isme {
+        flex-direction: row-reverse;
+
+        #{ $self }__bubble {
+            background-color: $grey;
+            border-radius: 5px 5px 0 5px;
+        }
+
+        #{ $self }__text {
+            color: $black;
+        }
+
+        #{ $self }__date {
+            text-align: right;
+        }
+
+        #{ $self }__avatar {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+
+        #{ $self }__info {
+            text-align: right;
+        }
+    }
+}
