@@ -28,7 +28,7 @@ const RegisterForm = props => {
                 <h2>Регистрация</h2>
             </div>
             <Form onSubmit={handleSubmit} className="login-form">
-                <Form.Item 
+                <Form.Item
                     validateStatus={!touched.email ? '' : errors.email ? 'error' : 'success'} 
                     hasFeedback
                     help={!touched.email ? false : errors.email}
@@ -76,7 +76,7 @@ const RegisterForm = props => {
                     />
                 </Form.Item>
                 <Form.Item>
-                    <Button 
+                    <Button
                         type="primary" 
                         htmlType="submit" 
                         className="login-form-button" 
