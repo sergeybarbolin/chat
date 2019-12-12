@@ -22,7 +22,7 @@ const Message = ({ avatar, user, text, date, isMe, readed, attachments }) => (
                     {
                         attachments.map(item => (
                             <div className="message__attachments-item">
-                                <img src={item.url} alt="" />
+                                <img src={item.url} alt={item.filename} />
                             </div>
                         ))
                     }
