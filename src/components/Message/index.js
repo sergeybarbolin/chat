@@ -8,16 +8,34 @@ import './Message.scss';
 import readedSvg from './../../assets/img/readed.svg';
 import noReadedSvg from './../../assets/img/noreaded.svg';
 
-const Message = ({ avatar, user, text, date, isMe, readed, attachments }) => (
-    <div className={ classNames('message', { "message--isme": isMe })}>
+const Message = ({ 
+    avatar, 
+    user, 
+    text, 
+    date, 
+    isMe, 
+    readed, 
+    attachments,
+    isTyping
+}) => (
+    <div className={ classNames('message', { 
+            "message--isme": isMe,
+            "message--istyping": isTyping
+        })}
+    >
         <div className="message__avatar">
             <img src={avatar} alt={user.fullname} />
         </div>
         <div className="message__content">
-            <div className="message__bubble">
-                <p className="message__text">{text}</p>
-            </div>
-            { attachments && 
+            {
+                ( text || isTyping ) &&
+                <div className="message__bubble">
+                    { text && <p className="message__text">{text}</p> }
+                    { isTyping && <div class="message__typing">Печатает...</div> } 
+                </div>
+            }
+            { 
+                attachments && 
                 <div className="message__attachments">
                     {
                         attachments.map(item => (
@@ -29,15 +47,26 @@ const Message = ({ avatar, user, text, date, isMe, readed, attachments }) => (
                 </div> 
             }
             <div className="message__info">
-                { isMe && <img className="message__status" src={ readed ? readedSvg : noReadedSvg  } alt="message-status" /> }
-                <span className="message__date">
-                    { formatDistanceToNow(new Date( date ), 
-                        {
-                            addSuffix: true,
-                            locale: ruLocale
-                        }
-                    )}
-                </span>
+                { 
+                    isMe && 
+                    <img 
+                        className="message__status" 
+                        src={ readed ? readedSvg : noReadedSvg  } 
+                        alt="message-status" 
+                    /> 
+                }
+
+                {
+                    date &&
+                    <p className="message__date">
+                        { formatDistanceToNow(new Date( date ), 
+                            {
+                                addSuffix: true,
+                                locale: ruLocale
+                            }
+                        )}
+                    </p>
+                }
             </div>
         </div>
     </div>
@@ -54,7 +83,8 @@ Message.propTypes = {
     user: PropTypes.object,
     attachments: PropTypes.array,
     isMe: PropTypes.bool,
-    readed: PropTypes.bool
+    readed: PropTypes.bool,
+    isTyping: PropTypes.bool
 }
 
 export default Message

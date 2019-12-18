@@ -12,7 +12,6 @@
         height: 35px;
         overflow: hidden;
         margin-right: 15px;
-        margin-bottom: 20px;
 
         img {
             width: 100%;
@@ -28,19 +27,19 @@
     &__bubble {
         background-color: $blue;
         border-radius: 5px 5px 5px 0;
-        padding: 2px;
+        padding: 8px 10px;
+        color: #fff;
     }
 
     &__text {
         margin: 0;
         font-size: 14px;
         line-height: 20px;
-        padding: 8px 10px;
-        color: #fff;
     }
 
     &__date {
         font-size: 12px;
+        margin-bottom: 0;
     }
 
     &__status {
@@ -49,17 +48,29 @@
 
     &__attachments {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         margin-top: 7px;
     }
 
-    .message__attachments-item {
-        width: 24%;
-        border-radius: 3px;
-        overflow: hidden;
+    &__typing {
+        opacity: 0.7;
     }
-    .message__attachments-item img {
-        width: 100%;
+
+    &__attachments {
+        justify-content: flex-end;
+
+        &-item {
+            border-radius: 3px;
+            overflow: hidden;
+            margin-left: 0;
+            margin-right: 10px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 20vw;
+            cursor: pointer;
+        }
     }
 
     &--isme {
@@ -68,9 +79,6 @@
         #{ $self }__bubble {
             background-color: $grey;
             border-radius: 5px 5px 0 5px;
-        }
-
-        #{ $self }__text {
             color: $black;
         }
 
@@ -80,11 +88,16 @@
 
         #{ $self }__avatar {
             margin-right: 0;
-            margin-left: 10px;
+            margin-left: 20px;
         }
 
         #{ $self }__info {
             text-align: right;
+        }
+
+        #{ $self }__attachments-item {
+            margin-left: 10px;
+            margin-right: 0;
         }
     }
 }
