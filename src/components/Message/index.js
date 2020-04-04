@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { formatDistanceToNow } from 'date-fns';
-import ruLocale from 'date-fns/locale/ru'
 import classNames from 'classnames';
 
 import './Message.scss';
-import readedSvg from './../../assets/img/readed.svg';
-import noReadedSvg from './../../assets/img/noreaded.svg';
+
+import { Time, IconReadStatus } from './../';
 
 const Message = ({ 
     avatar, 
@@ -31,7 +29,7 @@ const Message = ({
                 ( text || isTyping ) &&
                 <div className="message__bubble">
                     { text && <p className="message__text">{text}</p> }
-                    { isTyping && <div class="message__typing">Печатает...</div> } 
+                    { isTyping && <div className="message__typing">Печатает...</div> } 
                 </div>
             }
             { 
@@ -49,22 +47,13 @@ const Message = ({
             <div className="message__info">
                 { 
                     isMe && 
-                    <img 
-                        className="message__status" 
-                        src={ readed ? readedSvg : noReadedSvg  } 
-                        alt="message-status" 
-                    /> 
+                    <IconReadStatus readed={readed} />
                 }
 
                 {
                     date &&
                     <p className="message__date">
-                        { formatDistanceToNow(new Date( date ), 
-                            {
-                                addSuffix: true,
-                                locale: ruLocale
-                            }
-                        )}
+                        <Time date={new Date( date )} />
                     </p>
                 }
             </div>
