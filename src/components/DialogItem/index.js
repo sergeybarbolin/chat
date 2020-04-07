@@ -1,11 +1,29 @@
 import React from 'react';
 import classNames from 'classnames';
 import './DialogItem.scss';
+import { format, isToday, isThisWeek, isThisYear } from 'date-fns';
 
 import { IconReadStatus } from './..';
 
-const DialogItem = ({ user, lastMessage, unreaded, isMe }) => {
-    const {fullName, isOnline, avatar} = user;
+const getMessageTime = created_at => {
+    let formatDate = null;
+
+    if (isToday(created_at)) {
+        formatDate = format(created_at, 'HH:mm');
+    } else if (isThisWeek(created_at)) {
+        formatDate = format(created_at, 'eee');
+    } else if (isThisYear(created_at)) {
+        formatDate = format(created_at, 'dd.MM');
+    } else {
+        formatDate = format(created_at, 'dd.MM.yyyy');
+    }
+
+    return formatDate;
+};
+
+const DialogItem = ({ user, text, created_at, unreaded, userId }) => {
+    const {fullName, isOnline, avatar, _id} = user;
+    const isMe = _id === userId;
 
     return (
         <div className={classNames( 'dialog-item', { 'dialog-item--online': isOnline } )}>
@@ -20,13 +38,13 @@ const DialogItem = ({ user, lastMessage, unreaded, isMe }) => {
             <div className="dialog-item__info">
             <span className="dialog-item__user-fullname">{ fullName }</span>
                 <br/>
-                <span className="dialog-item__message-text">{ lastMessage }</span>
+                <span className="dialog-item__message-text">{  text }</span>
             </div>
 
             <div className="dialog-item__status">
-                <time className="dialog-item__time">13:10</time>
+                <time className="dialog-item__time">{ getMessageTime( created_at ) }</time>
                 { isMe && <IconReadStatus className="dialog-item__readed-status" readed={true} /> }
-                { !isMe && unreaded && <span className="count-messages">{ unreaded }</span> }
+                { !isMe && !!unreaded && <span className="count-messages">{ unreaded }</span> }
             </div>
         </div>
     );

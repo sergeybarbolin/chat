@@ -1,22 +1,38 @@
 import React from 'react';
-import { DialogItem } from './../../components';
+import { Dialogs } from './../../components';
 
 import './Home.scss';
 
 const Home = () => (
     <section className="home">
-        <div className="dialogs">
-            <DialogItem 
-                user={{
-                    fullName: 'Фёдор Достаевский',
-                    isOnline: true,
-                    avatar: 'https://zolotoy.ru/wp-content/uploads/2019/10/DSCF6760-e1571049298553-278x300.jpg'
-                }}
-                lastMessage="Какое-то длинное сообщение длинное сообщение длинное сообщение."
-                unreaded={312233}
-                isMe={false}
-            />
-        </div>
+        <Dialogs 
+            items={[
+                {
+                    _id: Math.random(),
+                    user: {
+                        _id: 0,
+                        fullName: 'Фёдор Достаевский',
+                        isOnline: true,
+                        avatar: 'https://radiovera.ru/wp-content/uploads/2013/12/dostoevsky.jpg'
+                    },
+                    text: "Какое-то длинное сообщение длинное сообщение длинное сообщение.",
+                    created_at: new Date('2020-04-07T12:24:00'),
+                    unreaded: 3,
+                },
+                {
+                    _id: Math.random(),
+                    user: {
+                        _id: 1,
+                        fullName: 'Роберт Де нНиро',
+                        isOnline: true,
+                        avatar: 'https://thumbs.dfs.ivi.ru/storage23/contents/3/1/163fb2f04e6cc23646fe80638a7c10.jpg'
+                    },
+                    text: "Го снимем фильм",
+                    created_at: new Date('2020-03-07T12:24:00'),
+                    unreaded: 1,
+                }
+            ]}
+        />
         {/* <Dialogs items={[
             {
                 user: {
@@ -26,7 +42,7 @@ const Home = () => (
                 message: {
                     text: 'Какой-то текст...',
                     isReaded: false,
-                    crated_at: new Date(),
+                    crated_at:  ,
 
                 }
             }
