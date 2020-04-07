@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialogs } from './../../components';
+import { Dialogs, Message } from './../../components';
 
 import './Home.scss';
 
@@ -33,27 +33,14 @@ const Home = () => (
                 }
             ]}
         />
-        {/* <Dialogs items={[
-            {
-                user: {
-                    fullName: 'Фёдор Достоевский',
-                    avatar: null,
-                },
-                message: {
-                    text: 'Какой-то текст...',
-                    isReaded: false,
-                    crated_at:  ,
 
-                }
-            }
-        ]} /> */}
-        {/* <Message 
+        <Message 
             avatar="https://zolotoy.ru/wp-content/uploads/2019/10/Ntv8QRMb-Wo-e1571144474635-254x300.jpg"
-            text="Ex laboris deserunt tempor consequat esse reprehenderit. Anim nisi qui nisi nostrud id qui et sint ullamco irure laboris laborum amet incididunt. Eu labore exercitation cillum ullamco. Culpa nulla sint est deserunt officia adipisicing do ullamco."
+            audio="https://notificationsounds.com/soundfiles/cee631121c2ec9232f3a2f028ad5c89b/file-oringz-beautiful-christmas-tune.mp3"
             date="Thu Nov 28 2019 10:19:12"
             isMe={false}
         />
-        <Message 
+        {/* <Message 
             avatar="https://zolotoy.ru/wp-content/uploads/2019/10/DSCF6760-e1571049298553-278x300.jpg"
             text="Enim id occaecat reprehenderit proident."
             date="Thu Dec 11 2019 15:32:12"
