@@ -7,17 +7,7 @@
     margin-bottom: 10px;
 
     &__avatar {
-        border-radius: 50%;
-        width: 35px;
-        height: 35px;
-        overflow: hidden;
         margin-right: 15px;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
     }
 
     &__content {
@@ -47,18 +37,14 @@
         margin: 0 10px;
     }
 
-    &__attachments {
-        display: flex;
-        justify-content: flex-start;
-        margin-top: 7px;
-    }
-
     &__typing {
         opacity: 0.7;
     }
 
     &__attachments {
+        display: flex;
         justify-content: flex-end;
+        margin-top: 7px;
 
         &-item {
             border-radius: 3px;

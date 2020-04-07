@@ -23,7 +23,7 @@ const Message = ({
             "message--isaudio": !! audio
         })}
     >
-        <div className="message__avatar">
+        <div className="message__avatar user-avatar">
             <img src={avatar} alt={user.fullname} />
         </div>
         <div className="message__content">

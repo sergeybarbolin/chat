@@ -10,10 +10,11 @@ const Home = () => (
                 {
                     _id: Math.random(),
                     user: {
-                        _id: 0,
+                        _id: '02b1be0d48924c327124732726097157',
                         fullName: 'Фёдор Достаевский',
                         isOnline: true,
-                        avatar: 'https://radiovera.ru/wp-content/uploads/2013/12/dostoevsky.jpg'
+                        // avatar: 'https://radiovera.ru/wp-content/uploads/2013/12/dostoevsky.jpg'
+                        avatar: null
                     },
                     text: "Какое-то длинное сообщение длинное сообщение длинное сообщение.",
                     created_at: new Date('2020-04-07T12:24:00'),
