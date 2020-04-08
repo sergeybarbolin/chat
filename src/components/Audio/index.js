@@ -46,18 +46,20 @@ const Audio = ({ audioSrc }) => {
     }
 
     useEffect(() => {
-        audioElem.current.addEventListener('playing', playingHandler);
-        audioElem.current.addEventListener('pause', pauseHandler);
-        audioElem.current.addEventListener('ended', endedHandler);
-        audioElem.current.addEventListener('timeupdate', timeupdateHandler);
-        audioElem.current.addEventListener('loadedmetadata', loadedMetaDataHandler);
+        const audioCurent = audioElem.current;
+
+        audioCurent.addEventListener('playing', playingHandler);
+        audioCurent.addEventListener('pause', pauseHandler);
+        audioCurent.addEventListener('ended', endedHandler);
+        audioCurent.addEventListener('timeupdate', timeupdateHandler);
+        audioCurent.addEventListener('loadedmetadata', loadedMetaDataHandler);
 
         return () => {
-            audioElem.current.removeEventListener('playing', playingHandler);
-            audioElem.current.removeEventListener('pause', pauseHandler);
-            audioElem.current.removeEventListener('ended', endedHandler);
-            audioElem.current.removeEventListener('timeupdate', timeupdateHandler);
-            audioElem.current.removeEventListener('loadedmetadata', loadedMetaDataHandler);
+            audioCurent.removeEventListener('playing', playingHandler);
+            audioCurent.removeEventListener('pause', pauseHandler);
+            audioCurent.removeEventListener('ended', endedHandler);
+            audioCurent.removeEventListener('timeupdate', timeupdateHandler);
+            audioCurent.removeEventListener('loadedmetadata', loadedMetaDataHandler);
         }
     }, []);
 

@@ -7,3 +7,6 @@ export { default as Time } from './Time';
 export { default as IconReadStatus } from './IconReadStatus';
 export { default as Audio } from './Audio';
 export { default as Avatar } from './Avatar';
+export { default as ChatInput } from './ChatInput';
+export { default as Messages } from './Messages';
+
