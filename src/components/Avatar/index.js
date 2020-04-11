@@ -1,5 +1,5 @@
 import React from 'react';
-import generateAvatarFromHash from './../../utils/generateAvatarFromHash';
+import generateAvatarFromHash from './../../utils/helpers/generateAvatarFromHash';
 import './Avatar.scss';
 
 const Avatar = ({ user}) => {

@@ -60,7 +60,7 @@ const Message = ({
                 {
                     date &&
                     <p className="message__date">
-                        <Time date={new Date( date )} />
+                        <Time date={ date } />
                     </p>
                 }
             </div>

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Input, Empty } from 'antd';
 
 import { DialogItem } from './../';
+import { dialogsActions } from './../../redux/actions';
 import './Dialogs.scss';
 
 const { Search } = Input;
-const Dialogs = ({ items, userId }) => {
+const Dialogs = (props) => {
+    const { fetchDialogs, setCurrentDialog, items, userId } = props;
     const [foundDialogs, setFoundDialogs] = useState(items);
     const searchDialogs = value => {
         const results = items.filter(item => {
@@ -16,6 +19,14 @@ const Dialogs = ({ items, userId }) => {
 
         setFoundDialogs(results);
     }
+
+    useEffect(() => {
+        if (!items.length) {
+            fetchDialogs();
+        } else {
+            setFoundDialogs(items);
+        }
+    }, [items, fetchDialogs]);
     
     return (
         <div className="dialogs">
@@ -28,9 +39,9 @@ const Dialogs = ({ items, userId }) => {
             </div>
             { 
             foundDialogs.length ?
-                [...foundDialogs].sort((a, b) => b.created_at - a.created_at)
+                [...foundDialogs].sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
                 .map( item => (
-                    <DialogItem key={ item._id } userId={userId} {...item} />
+                    <DialogItem key={ item._id } onSelect={setCurrentDialog} userId={userId} {...item} />
                 )) 
                 : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'Диалоги не найдены'} />
             }
@@ -40,4 +51,7 @@ const Dialogs = ({ items, userId }) => {
 
 
 
-export default Dialogs;
+export default connect(
+    ({ dialogs }) => dialogs, 
+    dialogsActions
+)(Dialogs);

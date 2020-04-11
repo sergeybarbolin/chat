@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import convertCurrentTime from './../../utils/convertCurrentTime.js';
+import convertCurrentTime from './../../utils/helpers/convertCurrentTime.js';
 
 import { ReactComponent as PlaySvg } from './../../assets/img/play.svg';
 import { ReactComponent as PauseSvg } from './../../assets/img/pause.svg';

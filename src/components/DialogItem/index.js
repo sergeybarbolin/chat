@@ -6,26 +6,30 @@ import './DialogItem.scss';
 
 const getMessageTime = created_at => {
     let formatDate = null;
+    let date = new Date(created_at);
 
-    if (isToday(created_at)) {
-        formatDate = format(created_at, 'HH:mm');
-    } else if (isThisWeek(created_at)) {
-        formatDate = format(created_at, 'eee');
-    } else if (isThisYear(created_at)) {
-        formatDate = format(created_at, 'dd.MM');
+    if (isToday(date)) {
+        formatDate = format(date, 'HH:mm');
+    } else if (isThisWeek(date)) {
+        formatDate = format(date, 'eee');
+    } else if (isThisYear(date)) {
+        formatDate = format(date, 'dd.MM');
     } else {
-        formatDate = format(created_at, 'dd.MM.yyyy');
+        formatDate = format(date, 'dd.MM.yyyy');
     }
 
     return formatDate;
 };
 
-const DialogItem = ({ user, text, created_at, unreaded, userId }) => {
-    const {fullName, isOnline, _id} = user;
-    const isMe = _id === userId;
+const DialogItem = ({ _id, user, text, created_at, unreaded, userId, onSelect }) => {
+    const {fullName, isOnline,} = user;
+    const isMe = user._id === userId;
 
     return (
-        <div className={classNames( 'dialog-item', { 'dialog-item--online': isOnline } )}>
+        <div 
+            className={classNames( 'dialog-item', { 'dialog-item--online': isOnline } )}
+            onClick={onSelect.bind(this, _id)}
+        >
             <div className="dialog-item__avatar">
                 <Avatar className="dialog-item__avatar" user={user} />
             </div>
@@ -37,7 +41,7 @@ const DialogItem = ({ user, text, created_at, unreaded, userId }) => {
             </div>
 
             <div className="dialog-item__status">
-                <time className="dialog-item__time">{ getMessageTime( created_at ) }</time>
+                <time className="dialog-item__time">{ getMessageTime(  new Date(created_at) ) }</time>
                 { isMe && <IconReadStatus className="dialog-item__readed-status" readed={true} /> }
                 { !isMe && !!unreaded && <span className="count-messages">{ unreaded }</span> }
             </div>

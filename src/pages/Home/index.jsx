@@ -17,36 +17,7 @@ const Home = () => (
                     </button>
                 </div>
 
-                <Dialogs
-                    userId={1}
-                    items={[
-                        {
-                            _id: Math.random(),
-                            user: {
-                                _id: '02b1be0d48924c327124732726097157',
-                                fullName: 'Фёдор Достаевский',
-                                isOnline: true,
-                                // avatar: 'https://radiovera.ru/wp-content/uploads/2013/12/dostoevsky.jpg'
-                                avatar: null
-                            },
-                            text: "Какое-то длинное сообщение длинное сообщение длинное сообщение.",
-                            created_at: new Date('2020-04-07T12:24:00'),
-                            unreaded: 3,
-                        },
-                        {
-                            _id: Math.random(),
-                            user: {
-                                _id: 1,
-                                fullName: 'Роберт Де нНиро',
-                                isOnline: true,
-                                avatar: 'https://thumbs.dfs.ivi.ru/storage23/contents/3/1/163fb2f04e6cc23646fe80638a7c10.jpg'
-                            },
-                            text: "Го снимем фильм",
-                            created_at: new Date('2020-03-07T12:24:00'),
-                            unreaded: 1,
-                        }
-                    ]}
-                />
+                <Dialogs userId={1} />
             </div>
             <div className="chat-dialog">
                 <div className="chat-dialog__header">
