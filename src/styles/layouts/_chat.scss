@@ -36,7 +36,7 @@
         display: flex;
         padding: 10px;
         align-items: center;
-        height: 55px;
+        min-height: 55px;
         box-sizing: border-box;
         border-bottom: 1px solid #dedede;
         margin-bottom: 15px;
@@ -56,14 +56,8 @@
     flex-direction: column;
 
     &__body {
-        overflow: auto;
         flex: 1 auto;
-        padding: 10px;
-        
-        .ant-empty {
-            margin-top: 50%;
-            transform: translateY(-50%);
-        }
+        overflow: hidden;
     }
 
     &__header {

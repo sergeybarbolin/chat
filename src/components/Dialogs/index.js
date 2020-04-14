@@ -8,7 +8,7 @@ import './Dialogs.scss';
 
 const { Search } = Input;
 const Dialogs = (props) => {
-    const { fetchDialogs, setCurrentDialog, items, userId } = props;
+    const { fetchDialogs, setCurrentDialogId, currentDialogId, items, userId } = props;
     const [foundDialogs, setFoundDialogs] = useState(items);
     const searchDialogs = value => {
         const results = items.filter(item => {
@@ -41,7 +41,7 @@ const Dialogs = (props) => {
             foundDialogs.length ?
                 [...foundDialogs].sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
                 .map( item => (
-                    <DialogItem key={ item._id } onSelect={setCurrentDialog} userId={userId} {...item} />
+                    <DialogItem key={ item._id } onSelect={setCurrentDialogId} currentDialogId={currentDialogId} userId={userId} {...item} />
                 )) 
                 : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'Диалоги не найдены'} />
             }

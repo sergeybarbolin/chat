@@ -1,7 +1,7 @@
 import React from 'react';
-import classNames from 'classnames';
 import { format, isToday, isThisWeek, isThisYear } from 'date-fns';
 import { IconReadStatus, Avatar } from './..';
+import classNames from 'classnames';
 import './DialogItem.scss';
 
 const getMessageTime = created_at => {
@@ -21,14 +21,16 @@ const getMessageTime = created_at => {
     return formatDate;
 };
 
-const DialogItem = ({ _id, user, text, created_at, unreaded, userId, onSelect }) => {
-    const {fullName, isOnline,} = user;
+const DialogItem = ({ _id, user, text, created_at, unreaded, userId, onSelect, currentDialogId }) => {
+    const { fullName } = user;
     const isMe = user._id === userId;
 
     return (
         <div 
-            className={classNames( 'dialog-item', { 'dialog-item--online': isOnline } )}
-            onClick={onSelect.bind(this, _id)}
+            className={classNames("dialog-item", {
+                'dialog-item--current': currentDialogId === _id
+            })}
+            onClick={currentDialogId !== _id ? onSelect.bind(this, _id) : null }
         >
             <div className="dialog-item__avatar">
                 <Avatar className="dialog-item__avatar" user={user} />

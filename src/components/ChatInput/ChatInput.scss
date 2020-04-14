@@ -1,6 +1,8 @@
 .chat-input {
+    position: relative;
     display: flex;
-    height: 56px;
+    align-items: center;
+    height: 55px;
     font-size: 15px;
     background: #f1f8ff;
     padding: 0 10px;
@@ -14,6 +16,9 @@
     }
 
     &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background: transparent;
         border: 0;
         font-size: 24px;
@@ -22,8 +27,21 @@
         outline: none;
     }
 
-    &__btn:hover {
+    input[type="file"],
+    &::-webkit-file-upload-button {
+        cursor: pointer;
+    }
+
+    &__btn:hover,
+    &__btn:hover button,
+    &__btn--active {
         color: #305b8a;
+    }
+
+    .emoji-mart {
+        position: absolute;
+        left: 0;
+        bottom: 55px;
     }
 }
 
